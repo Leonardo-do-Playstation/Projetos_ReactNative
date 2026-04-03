@@ -7,7 +7,7 @@ import logoPassword from "../../../assets/logo-app.png"
 export function Logo(){
     return(
         <View>
-            <Text style={styles.title}>PASWORD GENERATOR</Text>
+            <Text style={styles.title}>PASSWORD GENERATOR</Text>
 
             <Image
                 source={logoPassword}

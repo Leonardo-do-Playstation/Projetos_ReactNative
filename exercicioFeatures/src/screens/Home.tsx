@@ -1,30 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import React from "react";
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import { View, Text } from "react-native";
 
-import { Menu } from "../components/Menu/Menu"
-import { Logo } from '../components/Logo/Logo';
+import { Menu } from "../components/Menu/Menu";
+import { Logo } from "../components/Logo/Logo";
 
-import { SecButton } from '../components/SecButton/SecButton';
+import { SecButton } from "../components/SecButton/SecButton";
 
-import { styles } from './HomeStyles';
+import { styles } from "./HomeStyles";
+import { InputLength } from "../components/inputLenght/inputLength";
 
-export function Home(){
-    return(
-        <View style={styles.container}>
+export function Home() {
+  const [passwordLength, setPasswordLength] = useState(10);
+  const [password, setPassword] = useState("");
 
-            <View style={styles.logoContainer}>
-                <Logo/>
-            </View>
+  return (
+    <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Logo />
+      </View>
 
-            <View style={styles.inputContainer}>
-                <SecButton/>
-            </View>
+      <View style={styles.inputContainer}>
+        <InputLength
+          passwordLength={passwordLength}
+          setPasswordLength={setPasswordLength}
+        />
 
-            {/*<Text>Home is workink!!👌</Text>
+        <SecButton passwordLength={passwordLength}/>
+      </View>
+
+      {/*<Text>Home is workink!!👌</Text>
             <Text>Open up App.tsx to start working on your app!👌👌</Text>*/}
 
-            <StatusBar style="light" />
-        </View>
-    )
+      <StatusBar style="light" />
+    </View>
+  );
 }

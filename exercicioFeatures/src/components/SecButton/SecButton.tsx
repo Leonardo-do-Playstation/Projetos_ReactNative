@@ -6,13 +6,17 @@ import { styles } from "./SecButtonStyles";
 
 import { InputPassword } from "../InputPassword/InputPassword";
 
-import { passwordService } from "../../services/passswordService";
+import { passwordService } from "../../services/passwordService";
 
-export function SecButton() {
+interface SecButtonProps {
+  passwordLength: number;
+}
+
+export function SecButton({ passwordLength }: SecButtonProps) {
   const [pass, setPass] = useState("");
 
   function handleGenPassword() {
-    let token = passwordService();
+    let token = passwordService(passwordLength);
     setPass(token);
   }
 
@@ -22,11 +26,6 @@ export function SecButton() {
 
   return (
     <>
-      {/*<Button
-                title="GERAR SENHA 🙊"
-                onPress={Pressionar}
-            />*/}
-
       <InputPassword pass={pass} />
 
       <Pressable
@@ -36,7 +35,7 @@ export function SecButton() {
           { backgroundColor: pressed ? "#506ee5" : "#1E90FF" },
         ]}
       >
-        <Text style={styles.texto} onPress={handleGenPassword}>
+        <Text style={styles.texto}>
           GERAR SENHA 🙊
         </Text>
       </Pressable>
@@ -48,7 +47,7 @@ export function SecButton() {
           { backgroundColor: pressed ? "#506ee5" : "#1E90FF" },
         ]}
       >
-        <Text style={styles.texto} onPress={handleCopy}>
+        <Text style={styles.texto}>
           COPIAR 🗒️
         </Text>
       </Pressable>

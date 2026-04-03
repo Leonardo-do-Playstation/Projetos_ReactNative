@@ -5,6 +5,6 @@ import { styles } from "./MenuStyles";
 
 export function Menu(){
     return(
-        <Text style={styles.menu}>Menu is workink!!</Text>
+        <Text style={styles.menu}>Menu is working!!</Text>
     )
 }
